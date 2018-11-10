@@ -1,0 +1,13 @@
+h1 = t('.h1')
+
+table
+  tr
+    th = User.human_attribute_name :email
+    th = User.human_attribute_name :name
+    th = User.human_attribute_name :address
+
+  - @users.each do |user|
+    tr
+      td = user.email
+      td = user.name
+      td = user.address

@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      order_detail: 注文明細
+    attributes:
+      order_detail:
+        quantity: 個数
+        sum: 小計

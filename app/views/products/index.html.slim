@@ -1,0 +1,23 @@
+h1 = t('.h1')
+
+table
+  thead
+    tr
+      th = Product.human_attribute_name :name
+      th = Product.human_attribute_name :price
+      th
+      th
+      th
+
+  tbody
+    - @products.each do |product|
+      tr
+        td = product.name
+        td = product.price
+        td = link_to t('.show'), product
+        td = link_to t('.edit'), edit_product_path(product)
+        td = link_to t('.destroy'), product, data: { confirm: t('.destroy_confirm') }, method: :delete
+
+br
+
+= link_to t('.new_product'), new_product_path

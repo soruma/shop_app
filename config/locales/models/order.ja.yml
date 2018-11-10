@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      order: 注文
+    attributes:
+      order:
+        details: 明細
+        sum: 合計
+      order/user:
+        name: ユーザー名

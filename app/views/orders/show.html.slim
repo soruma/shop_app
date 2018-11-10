@@ -1,0 +1,25 @@
+h1 = t('.h1')
+
+table
+  tr
+    th = Order.human_attribute_name 'user.name'
+    td = @order.user.name
+
+  tr
+    th = Order.human_attribute_name :details
+    td
+      table
+        tr
+          th = OrderDetail.human_attribute_name 'product.name'
+          th = OrderDetail.human_attribute_name :quantity
+          th = OrderDetail.human_attribute_name 'product.price'
+          th = OrderDetail.human_attribute_name :sum
+        tr
+          - @order.details.each do |detail|
+            tr
+              td = detail.item.name
+              td.text-right = detail.quantity
+              td.text-right = detail.item.price
+              td.text-right = number_with_delimiter(detail.sum)
+
+= link_to t('.back'), orders_path

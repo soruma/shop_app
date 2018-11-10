@@ -1,0 +1,12 @@
+ja:
+  orders:
+    index:
+      h1: 注文一覧
+      goto_order: 注文へ
+    new:
+      h1: 注文作成
+      add_row: 行追加
+      remove_row: 行削除
+    show:
+      h1: 注文詳細
+      back: 戻る

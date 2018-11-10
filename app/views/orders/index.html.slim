@@ -1,0 +1,31 @@
+h1 = t('.h1')
+
+table
+  thead
+    tr
+      th = Order.human_attribute_name 'user.name'
+      th = OrderDetail.model_name.human
+      th.text-right = Order.human_attribute_name :sum
+
+  tbody
+    - @orders.each do |order|
+      tr
+        td = order.user.name
+        td
+          table
+            thead
+              tr
+                th = OrderDetail.human_attribute_name 'product.name'
+                th = OrderDetail.human_attribute_name :quantity
+                th = OrderDetail.human_attribute_name 'product.price'
+                th = OrderDetail.human_attribute_name :sum
+            tbody
+              - order.details.each do |detail|
+                tr
+                  td = detail.item.name
+                  td.text-right = detail.quantity
+                  td.text-right = detail.item.price
+                  td.text-right = number_with_delimiter(detail.sum)
+        td.text-right = number_with_delimiter(order.sum)
+
+= link_to t('.goto_order'), new_order_path

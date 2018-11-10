@@ -1,0 +1,24 @@
+h1 = t('.h1')
+
+= form_for @order do |f|
+  - if @order.errors.any?
+    #error_explanation
+      h2 = t('.error', count: @order.errors.count)
+      ul
+        - @order.errors.full_messages.each do |message|
+          li = message
+
+  table
+    tbody
+      tr
+        th = f.label :user_id
+        td = f.collection_select :user_id, User.all, :id, :name
+
+  div.details
+    = link_to_add_association t('.add_row'), f, :details
+      table
+        = f.fields_for :details do |d|
+          = render 'order_detail_fields', f: d
+
+  div.actions
+    = f.submit
